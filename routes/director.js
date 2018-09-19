@@ -17,6 +17,8 @@ router.post('/', function(req, res, next) {
     });
 });
 
+
+
 router.get('/',(req,res)=>{
     const promise=Director.aggregate([
       {
@@ -110,6 +112,23 @@ promise.then((data)=>{
 }).catch((err)=>{
   res.json(err);
 });
+});
+
+router.put('/:director_id',(req,res,next)=>{
+  const promise=Director.findByIdAndUpdate(
+    req.params.director_id,
+    req.body,
+    {
+      new:true
+    }
+  );
+  promise.then((data)=>{
+    if(!data)
+      next('the director was not found');
+    res.json(data);
+  }).catch((err)=>{
+    res.json(err);
+  });
 });
 
 module.exports = router;

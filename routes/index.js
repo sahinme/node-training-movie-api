@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home Page' });
 });
 
-router.post('/register', function(req, res, next) {
+router.post('/register',(req, res, next)=>{
 
   const {username,password}=req.body;
 

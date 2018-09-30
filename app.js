@@ -13,6 +13,10 @@ const app = express();
 // Database connection
 const db=require('./helper/db.js')();
 
+// config
+const config=require('./config.js');
+app.set('api_secret_keys',config.api_secret_keys);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

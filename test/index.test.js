@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 
 describe('Node JS Server Test',()=>{  // description or title your test  
 
-    it('(GET /) İndex sayfası çağırımı başarılı',(done)=>{
+    it('(GET /) return of index page ',(done)=>{
         chai.request(server)
         .get('/')
         .end((err,res)=>{

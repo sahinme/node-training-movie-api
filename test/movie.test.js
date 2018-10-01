@@ -21,7 +21,7 @@ describe('/api/movies tests',()=>{
         });
 
 describe('(/ GET movies)',()=>{
-    it('it shoul GET all movies',(done)=>{
+    it('it should GET all movies',(done)=>{
         chai.request(server)
             .get('/api/movies')
             .set('x-access-token',token)
@@ -30,6 +30,35 @@ describe('(/ GET movies)',()=>{
                 res.body.should.be.a('array');
                     done();
             });       
+    });
+});
+
+describe('(/ POST movies)',()=>{
+    it('it should POST a movie',(done)=>{
+        const movie = {
+            title:'film x',
+            director_id:'5b9ecfd302b82342e4a1215f',
+            category:'action',
+            country:'Turkey',
+            year:2018,
+            imdb_score:'8.9'
+        };
+
+        chai.request(server)
+            .post('/api/movies')
+            .send(movie)
+            .set('x-access-token',token)
+            .end((err,res)=>{
+                res.should.have.status(200),
+                res.body.should.be.a('object'),
+                res.body.should.have.property('title')
+                res.body.should.have.property('director_id')
+                res.body.should.have.property('category')
+                res.body.should.have.property('country')
+                res.body.should.have.property('year')
+                res.body.should.have.property('imdb_score')
+                    done();
+            });  
     });
 });
 

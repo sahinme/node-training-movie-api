@@ -114,6 +114,21 @@ describe('(/ PUT movie by given movie_id)',()=>{
     });
 });
 
+describe('(/ DELETE movie by given movie_id)',()=>{
+    it('it should GET a movie',(done)=>{
+
+        chai.request(server)
+            .delete('/api/movies/'+movieId)
+            .set('x-access-token',token)
+            .end((err,res)=>{
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.property('message').eql('the movie was deleted!');
+                    done();
+            });  
+    });
+});
+
 
 
  });

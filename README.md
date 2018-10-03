@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.org/freeadmiral/node-training-movie-api.svg)](https://travis-ci.org/freeadmiral/node-training-movie-api)
+
 # node-training-movie-api
 NodeJS Training- Movie API
 # Movies
